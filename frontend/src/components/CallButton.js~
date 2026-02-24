@@ -1,0 +1,15 @@
+import React from 'react';
+
+const CallButton = ({ phoneNumber, className = '' }) => {
+  return (
+    <a
+      href={`tel:${phoneNumber}`}
+      className={`flex items-center justify-center gap-3 bg-green-500 text-white text-xl font-bold py-5 px-6 rounded-xl hover:bg-green-600 shadow-lg transition-all ${className}`}
+    >
+      <span className="text-2xl">📞</span>
+      LLAMAR AHORA
+    </a>
+  );
+};
+
+export default CallButton;

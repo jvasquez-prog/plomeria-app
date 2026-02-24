@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optimizaciones para móvil */
+html {
+  font-size: 16px;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Hacer botones más grandes para dedos */
+button, a {
+  min-height: 44px; /* Tamaño mínimo recomendado por Apple */
+}
+
+/* Evitar zoom en inputs (iOS) */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mejorar rendimiento de animaciones */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ocultar scrollbars en iOS pero mantener funcionalidad */
+::-webkit-scrollbar {
+  display: none;
+}

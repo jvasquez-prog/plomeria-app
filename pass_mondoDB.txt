@@ -1,0 +1,8 @@
+user: jvasquez10
+
+pass: xdxYxNprI1XCg0zQ
+
+
+connection string:
+
+mongodb+srv://jvasquez10:<db_password>@plomeriacluster.vudi0f4.mongodb.net/?appName=PlomeriaCluster
