@@ -1,11 +1,9 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User.model');
 
-// Proteger rutas - verificar token JWT
 exports.protect = async (req, res, next) => {
   let token;
   
-  // Verificar si el token está en los headers
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     token = req.headers.authorization.split(' ')[1];
   }
@@ -18,10 +16,7 @@ exports.protect = async (req, res, next) => {
   }
   
   try {
-    // Verificar token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
-    // Obtener usuario del token
     req.user = await User.findById(decoded.id).select('-password');
     
     if (!req.user) {
@@ -40,20 +35,18 @@ exports.protect = async (req, res, next) => {
   }
 };
 
-// Restringir acceso por roles
 exports.authorize = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
       return res.status(403).json({
         success: false,
-        message: `El rol ${req.user.role} no tiene permiso para acceder a esta ruta`
+        message: `El rol ${req.user.role} no tiene permiso`
       });
     }
     next();
   };
 };
 
-// Generar token JWT
 exports.generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: '30d'

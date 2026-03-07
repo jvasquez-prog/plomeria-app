@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
-    sparse: true, // Permite que sea opcional
+    sparse: true,
     lowercase: true,
     trim: true
   },
@@ -22,10 +22,10 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: function() {
-      return this.email !== undefined; // Solo requerido si tiene email
+      return this.email !== undefined;
     },
     minlength: 6,
-    select: false // No devolver la contraseña por defecto
+    select: false
   },
   address: {
     street: String,
@@ -48,16 +48,11 @@ const userSchema = new mongoose.Schema({
   isVerified: {
     type: Boolean,
     default: false
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
   }
 }, {
   timestamps: true
 });
 
-// Hashear password antes de guardar
 userSchema.pre('save', async function(next) {
   if (!this.isModified('password')) {
     return next();
@@ -70,7 +65,6 @@ userSchema.pre('save', async function(next) {
   next();
 });
 
-// Método para comparar passwords
 userSchema.methods.matchPassword = async function(enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
