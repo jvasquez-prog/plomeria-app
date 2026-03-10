@@ -6,3 +6,14 @@ pass: xdxYxNprI1XCg0zQ
 connection string:
 
 mongodb+srv://jvasquez10:<db_password>@plomeriacluster.vudi0f4.mongodb.net/?appName=PlomeriaCluster
+
+
+username: plomeria-app
+pass al cluter: i6ZG2ur9FdXYyWNZ
+
+mongodb+srv://jvasquez10:<db_password>@plomeriacluster.vudi0f4.mongodb.net/?appName=PlomeriaCluster
+
+
+como obtener el JWT_SECRET (ejecutar lo siguiente):
+
+node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
