@@ -1,65 +1,29 @@
-// App.js - Frontend de Plomería Confiable
-
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import PlumberList from './pages/PlumberList';
-import PlumberProfile from './pages/PlumberProfile';
-import RequestForm from './pages/RequestForm';
-import MyRequests from './pages/MyRequests';
-import QuoteView from './pages/QuoteView';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
-    <Router>
-      <div className="App min-h-screen bg-gray-50">
-        <Navbar />
-        
-        <Routes>
-          {/* Rutas públicas */}
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/plumbers" element={<PlumberList />} />
-          <Route path="/plumber/:id" element={<PlumberProfile />} />
-          
-          {/* Rutas protegidas (requieren autenticación) */}
-          <Route 
-            path="/request" 
-            element={
-              <ProtectedRoute>
-                <RequestForm />
-              </ProtectedRoute>
-            } 
-          />
-          
-          <Route 
-            path="/my-requests" 
-            element={
-              <ProtectedRoute>
-                <MyRequests />
-              </ProtectedRoute>
-            } 
-          />
-          
-          <Route 
-            path="/quote/:id" 
-            element={
-              <ProtectedRoute>
-                <QuoteView />
-              </ProtectedRoute>
-            } 
-          />
-          
-          {/* Ruta 404 - Redirigir al home */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+    <div style={{ textAlign: 'center', padding: '50px' }}>
+      <h1>🔧 Plomería Confiable</h1>
+      <p>Backend conectado y funcionando</p>
+      <p style={{ color: 'green', marginTop: '20px' }}>
+        ✅ Frontend deployado exitosamente en Vercel
+      </p>
+      <div style={{ marginTop: '40px' }}>
+        <a 
+          href="tel:1155551234"
+          style={{
+            backgroundColor: '#3b82f6',
+            color: 'white',
+            padding: '15px 30px',
+            textDecoration: 'none',
+            borderRadius: '8px',
+            fontSize: '18px'
+          }}
+        >
+          📞 Llamar Ahora
+        </a>
       </div>
-    </Router>
+    </div>
   );
 }
 
