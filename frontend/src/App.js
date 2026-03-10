@@ -1,29 +1,72 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
+
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import PlumberList from './pages/PlumberList';
+import PlumberProfile from './pages/PlumberProfile';
+import RequestForm from './pages/RequestForm';
+import MyRequests from './pages/MyRequests';
+import QuoteView from './pages/QuoteView';
 
 function App() {
   return (
-    <div style={{ textAlign: 'center', padding: '50px' }}>
-      <h1>🔧 Plomería Confiable</h1>
-      <p>Backend conectado y funcionando</p>
-      <p style={{ color: 'green', marginTop: '20px' }}>
-        ✅ Frontend deployado exitosamente en Vercel
-      </p>
-      <div style={{ marginTop: '40px' }}>
-        <a 
-          href="tel:1155551234"
-          style={{
-            backgroundColor: '#3b82f6',
-            color: 'white',
-            padding: '15px 30px',
-            textDecoration: 'none',
-            borderRadius: '8px',
-            fontSize: '18px'
-          }}
-        >
-          📞 Llamar Ahora
-        </a>
+    <Router>
+      <div className="App min-h-screen bg-gray-50">
+        <Navbar />
+        
+        <main className="pb-12">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/plumbers" element={<PlumberList />} />
+            <Route path="/plumber/:id" element={<PlumberProfile />} />
+            
+            <Route 
+              path="/request" 
+              element={
+                <ProtectedRoute>
+                  <RequestForm />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
+              path="/my-requests" 
+              element={
+                <ProtectedRoute>
+                  <MyRequests />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
+              path="/quote/:id" 
+              element={
+                <ProtectedRoute>
+                  <QuoteView />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
+        
+        <footer className="bg-gray-800 text-white py-6 mt-12">
+          <div className="container mx-auto px-4 text-center">
+            <p>© 2026 Plomería Confiable - CABA</p>
+            <p className="text-sm text-gray-400 mt-2">
+              Conectando personas con plomeros verificados
+            </p>
+          </div>
+        </footer>
       </div>
-    </div>
+    </Router>
   );
 }
 
