@@ -18,7 +18,7 @@ function App() {
       <div className="App min-h-screen bg-gray-50">
         <Navbar />
         
-        <main className="pb-12">
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -56,15 +56,6 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
-        
-        <footer className="bg-gray-800 text-white py-6 mt-12">
-          <div className="container mx-auto px-4 text-center">
-            <p>© 2026 Plomería Confiable - CABA</p>
-            <p className="text-sm text-gray-400 mt-2">
-              Conectando personas con plomeros verificados
-            </p>
-          </div>
-        </footer>
       </div>
     </Router>
   );

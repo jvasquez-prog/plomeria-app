@@ -32,70 +32,74 @@ function Register() {
   };
   
   return (
-    <div className="container mx-auto px-4 py-8 max-w-md">
-      <h1 className="text-3xl font-bold text-center mb-8">Registro</h1>
-      
-      {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-          {error}
-        </div>
-      )}
-      
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8">
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Nombre completo
-          </label>
-          <input
-            type="text"
-            value={formData.name}
-            onChange={(e) => setFormData({...formData, name: e.target.value})}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
-            required
-          />
-        </div>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-md mx-auto px-4">
+        <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
+          Crear Cuenta
+        </h1>
         
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Teléfono
-          </label>
-          <input
-            type="tel"
-            value={formData.phone}
-            onChange={(e) => setFormData({...formData, phone: e.target.value})}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
-            placeholder="11 1234-5678"
-            required
-          />
-        </div>
+        {error && (
+          <div className="bg-red-100 border-2 border-red-400 text-red-700 px-6 py-4 rounded-lg mb-6 text-lg">
+            {error}
+          </div>
+        )}
         
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Contraseña
-          </label>
-          <input
-            type="password"
-            value={formData.password}
-            onChange={(e) => setFormData({...formData, password: e.target.value})}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
-            required
-          />
-        </div>
-        
-        <button
-          type="submit"
-          disabled={loading}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
-        >
-          {loading ? 'Cargando...' : 'Registrarse'}
-        </button>
-        
-        <div className="text-center mt-4">
-          <Link to="/login" className="text-blue-500 hover:text-blue-700">
-            ¿Ya tienes cuenta? Inicia sesión
-          </Link>
-        </div>
-      </form>
+        <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-xl px-8 pt-8 pb-8">
+          <div className="mb-6">
+            <label className="block text-gray-700 text-lg font-bold mb-3">
+              Nombre completo
+            </label>
+            <input
+              type="text"
+              value={formData.name}
+              onChange={(e) => setFormData({...formData, name: e.target.value})}
+              className="w-full px-4 py-4 text-lg border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+            />
+          </div>
+          
+          <div className="mb-6">
+            <label className="block text-gray-700 text-lg font-bold mb-3">
+              Teléfono
+            </label>
+            <input
+              type="tel"
+              value={formData.phone}
+              onChange={(e) => setFormData({...formData, phone: e.target.value})}
+              className="w-full px-4 py-4 text-lg border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              placeholder="11 1234-5678"
+              required
+            />
+          </div>
+          
+          <div className="mb-8">
+            <label className="block text-gray-700 text-lg font-bold mb-3">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              value={formData.password}
+              onChange={(e) => setFormData({...formData, password: e.target.value})}
+              className="w-full px-4 py-4 text-lg border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              required
+            />
+          </div>
+          
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-lg text-xl transition disabled:opacity-50"
+          >
+            {loading ? 'Cargando...' : 'REGISTRARSE'}
+          </button>
+          
+          <div className="text-center mt-6">
+            <Link to="/login" className="text-blue-500 hover:text-blue-700 text-lg">
+              ¿Ya tienes cuenta? Inicia sesión
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
